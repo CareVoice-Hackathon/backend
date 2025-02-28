@@ -12,7 +12,7 @@ deepgram = DeepgramClient(DEEPGRAM_API_KEY)
 
 def transcribe_audio():
     # Open the audio file and read its content
-    with open("demo_htt_speech_voice.mp3", "rb") as audio:
+    with open("Lungs - Thursday at 8-04 p.m..m4a", "rb") as audio:
         audio_content = audio.read()
         
         # Create transcription options
@@ -32,7 +32,7 @@ def transcribe_audio():
         with open("htt_voice_to_text_output.txt", "w") as text_file:
             text_file.write(transcript)
             
-        print("Transcription completed and saved to htt_voice_to_text_output.txt")
+        print("Transcription completed and saved to lungs_voice_to_text_output.txt")
 
 # Run the function
 if __name__ == "__main__":
