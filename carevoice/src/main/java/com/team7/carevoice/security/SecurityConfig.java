@@ -58,12 +58,11 @@ public class SecurityConfig {
                 "/api/patient/**",
                 "/api/patients/**",
                 "/api/head-to-toe/get/**",      // for getting head to toe assessments by id
+                "/api/DARP/**"
                 "/api/head-to-toe/patch/**",
                 "/api/summary/**",
                 "/api/summary/patient/**",
                 "/api/transcript/**"
-
-                     // for updating head to toe assessments by id 
                 );       
 
 
