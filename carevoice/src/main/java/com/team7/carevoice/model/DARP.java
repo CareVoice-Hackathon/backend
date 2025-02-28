@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 
 @Entity
 public class DARP {
@@ -29,6 +30,11 @@ public class DARP {
 	private String action;
 	private String response;
 	private String plan;
+
+	@PrePersist
+    protected void onCreate() {
+        this.createdTime = LocalDateTime.now();
+    }
 
 	public DARP() {
 

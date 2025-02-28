@@ -19,7 +19,7 @@ public class HeadToToeAssessmentController {
 
     // GET endpoint - Retrieve an assessment by ID
     @GetMapping("/{id}")
-    public ApiResponse<HeadToToeAssessment> getAssessmentById(@PathVariable Long id) {
+    public ApiResponse<?> getAssessmentById(@PathVariable Long id) {
         return assessmentService.getAssessmentById(id);
     }
 

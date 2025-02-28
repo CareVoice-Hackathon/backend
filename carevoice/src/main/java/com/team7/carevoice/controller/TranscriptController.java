@@ -1,5 +1,7 @@
 package com.team7.carevoice.controller;
 
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +31,12 @@ public class TranscriptController {
      * POST /api/transcript/{transcriptId}
      * Accepts JSON: { createdTime, patientId, patientName, body }
      */
-    @PostMapping("/{transcriptId}")
+    @PostMapping("/")
     public ResponseEntity<ApiResponse<Transcript>> createTranscript(
-            @PathVariable Long transcriptId,
             @RequestBody TranscriptRequest request) {
 
         // (1) Call the service
-        ApiResponse<Transcript> response = transcriptService.createTranscript(transcriptId, request);
+        ApiResponse<Transcript> response = transcriptService.createTranscript(request);
 
         // (2) Decide on HTTP status based on success
         if (response.isSuccess()) {
@@ -68,9 +69,9 @@ public class TranscriptController {
     @PatchMapping("/{transcriptId}")
     public ResponseEntity<ApiResponse<Transcript>> patchTranscript(
             @PathVariable Long transcriptId,
-            @RequestBody TranscriptRequest partialRequest) {
+            @RequestBody Map<String, String> request) {
 
-        ApiResponse<Transcript> response = transcriptService.patchTranscript(transcriptId, partialRequest);
+        ApiResponse<Transcript> response = transcriptService.patchTranscript(transcriptId, request.get("body"));
 
         if (response.isSuccess()) {
             return ResponseEntity.ok(response);

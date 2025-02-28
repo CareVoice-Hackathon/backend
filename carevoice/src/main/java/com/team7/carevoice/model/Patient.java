@@ -35,6 +35,14 @@ public class Patient {
 	@JsonManagedReference
 	private List<HeadToToeAssessment> assessments;
 
+	@OneToMany(mappedBy = "patient")
+	@JsonManagedReference
+	private List<Transcript> transcripts;
+
+	@OneToMany(mappedBy = "patient")
+	@JsonManagedReference
+	private List<Summary> summaries;
+
 	@Column(nullable = false, unique = true) // Ensure AHS number is unique and non-null
     private String ahsNumber;
     private String name;

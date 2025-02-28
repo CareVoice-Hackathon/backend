@@ -2,13 +2,18 @@ package com.team7.carevoice.services;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team7.carevoice.dto.request.TranscriptRequest;
 import com.team7.carevoice.dto.response.ApiResponse;
+import com.team7.carevoice.model.Patient;
+import com.team7.carevoice.model.Summary;
 import com.team7.carevoice.model.Transcript;
+import com.team7.carevoice.repository.PatientRepository;
 import com.team7.carevoice.repository.TranscriptRepository;
 
 @Service
@@ -16,8 +21,15 @@ public class TranscriptService {
 
     private final TranscriptRepository transcriptRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
     public TranscriptService(TranscriptRepository transcriptRepository) {
         this.transcriptRepository = transcriptRepository;
+    }
+
+    public List<Transcript> getTranscriptsByPatientId(Long patientId) {
+        return transcriptRepository.findByPatientId(patientId);
     }
 
     /**
@@ -27,11 +39,10 @@ public class TranscriptService {
      * @param request the request body
      * @return an ApiResponse containing whether it succeeded and the Transcript data (or error message)
      */
-    public ApiResponse<Transcript> createTranscript(Long transcriptId, TranscriptRequest request) {
+    public ApiResponse<Transcript> createTranscript(TranscriptRequest request) {
         try {
             // 1) Construct or update the Transcript object
             Transcript transcript = new Transcript();
-            transcript.setId(transcriptId);
 
             // Parse createdTime if needed
             if (request.getCreatedTime() != null) {
@@ -39,9 +50,19 @@ public class TranscriptService {
                 LocalDateTime dateTime = LocalDateTime.parse(request.getCreatedTime(), formatter);
                 transcript.setCreatedTime(dateTime);
             }
+
+            Optional<Patient> patient = patientRepository.findById(request.getPatientId());
+            if(!patient.isPresent()) {
+                return new ApiResponse<>(
+                    false, 
+                    "Couldn't find patient from id"
+                );
+            }
+
+            Patient thePatient = patient.get();
             
             transcript.setName(request.getPatientName());
-            transcript.setPatientId(request.getPatientId());
+            transcript.setPatient(thePatient);
             transcript.setBody(request.getBody());
 
             // 2) Save to DB
@@ -87,7 +108,7 @@ public class TranscriptService {
         }
     }
 
-    public ApiResponse<Transcript> patchTranscript(Long transcriptId, TranscriptRequest partialRequest) {
+    public ApiResponse<Transcript> patchTranscript(Long transcriptId, String body) {
         Optional<Transcript> existingOpt = transcriptRepository.findById(transcriptId);
 
         if (existingOpt.isEmpty()) {
@@ -99,28 +120,28 @@ public class TranscriptService {
         }
         Transcript existingTranscript = existingOpt.get();
         // Only update fields if they're provided (non-null in TranscriptRequest)
-        if (partialRequest.getCreatedTime() != null) {
-            try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime dateTime = LocalDateTime.parse(partialRequest.getCreatedTime(), formatter);
-                existingTranscript.setCreatedTime(dateTime);
-            } catch (Exception e) {
-                return new ApiResponse<>(
-                    false,
-                    "Error parsing createdTime: " + e.getMessage(),
-                    null
-                );
-            }
-        }
+        // if (partialRequest.getCreatedTime() != null) {
+        //     try {
+        //         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        //         LocalDateTime dateTime = LocalDateTime.parse(partialRequest.getCreatedTime(), formatter);
+        //         existingTranscript.setCreatedTime(dateTime);
+        //     } catch (Exception e) {
+        //         return new ApiResponse<>(
+        //             false,
+        //             "Error parsing createdTime: " + e.getMessage(),
+        //             null
+        //         );
+        //     }
+        // }
 
-        if (partialRequest.getPatientName() != null) {
-            existingTranscript.setName(partialRequest.getPatientName());
-        }
-        if (partialRequest.getPatientId() != null) {
-            existingTranscript.setPatientId(partialRequest.getPatientId());
-        }
-        if (partialRequest.getBody() != null) {
-            existingTranscript.setBody(partialRequest.getBody());
+        // if (partialRequest.getPatientName() != null) {
+        //     existingTranscript.setName(partialRequest.getPatientName());
+        // }
+        // if (partialRequest.getPatientId() != null) {
+        //     // cannot set new patient 
+        // }
+        if (body != null) {
+            existingTranscript.setBody(body);
         }
         // Save the updated Transcript
         Transcript saved = transcriptRepository.save(existingTranscript);
