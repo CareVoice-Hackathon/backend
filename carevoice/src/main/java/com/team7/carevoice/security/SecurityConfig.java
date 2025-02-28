@@ -1,6 +1,7 @@
 package com.team7.carevoice.security;
 
-import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.List;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 public class SecurityConfig {
@@ -57,9 +58,13 @@ public class SecurityConfig {
                 "/api/patient/**",
                 "/api/patients/**",
                 "/api/head-to-toe/get/**",      // for getting head to toe assessments by id
-                "/api/head-to-toe/patch/**",     // for updating head to toe assessments by id 
                 "/api/DARP/**"
+                "/api/head-to-toe/patch/**",
+                "/api/summary/**",
+                "/api/summary/patient/**",
+                "/api/transcript/**"
                 );       
+
 
         List<String> protectedEndpoints = List.of(
                 "/api/user/profile/**",
@@ -68,7 +73,7 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-                    corsConfig.setAllowedOrigins(List.of("http://localhost:5173")); // Your frontend origin
+                    corsConfig.setAllowedOrigins(List.of("http://localhost:3000")); // Your frontend origin
                     corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Include OPTIONS
                     corsConfig.setAllowedHeaders(List.of("*")); // Allow all headers
                     corsConfig.setAllowCredentials(true); // Allow cookies/auth tokens
