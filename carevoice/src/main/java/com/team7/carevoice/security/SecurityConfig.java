@@ -55,7 +55,10 @@ public class SecurityConfig {
                 "/public/**", // Static files and public resources
                 "/static/**",
                 "/api/patient/**",
-                "/api/patients/**");
+                "/api/patients/**",
+                "/api/head-to-toe/get/**",      // for getting head to toe assessments by id
+                "/api/head-to-toe/patch/**"     // for updating head to toe assessments by id 
+                );       
 
         List<String> protectedEndpoints = List.of(
                 "/api/user/profile/**",
