@@ -4,13 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class DARP {
@@ -25,10 +19,14 @@ public class DARP {
 
 	private LocalDateTime createdTime;
 
-	private String data;
-	private String action;
-	private String response;
-	private String plan;
+    @Column(columnDefinition = "TEXT")
+    private String data;
+    @Column(columnDefinition = "TEXT")
+    private String action;
+    @Column(columnDefinition = "TEXT")
+    private String response;
+    @Column(columnDefinition = "TEXT")
+    private String plan;
 
 	public DARP() {
 

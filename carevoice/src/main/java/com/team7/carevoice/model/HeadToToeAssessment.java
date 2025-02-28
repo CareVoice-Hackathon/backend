@@ -4,13 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
 
 @Entity
 public class HeadToToeAssessment {
@@ -25,17 +19,29 @@ public class HeadToToeAssessment {
     @JoinColumn(name = "patient_id", nullable = false)
     @JsonBackReference
     private Patient patient;
-    
+
+    @Column(columnDefinition = "TEXT")
     private String neurological;
+    @Column(columnDefinition = "TEXT")
     private String heent; // Head, Eyes, Ears, Nose, Throat
+    @Column(columnDefinition = "TEXT")
     private String respiratory;
+    @Column(columnDefinition = "TEXT")
     private String cardiac;
+
+    @Column(columnDefinition = "TEXT")
     private String peripheralVascular;
+    @Column(columnDefinition = "TEXT")
     private String integumentary;
+    @Column(columnDefinition = "TEXT")
     private String musculoskeletal;
+    @Column(columnDefinition = "TEXT")
     private String gastrointestinal;
+    @Column(columnDefinition = "TEXT")
     private String genitourinary;
+    @Column(columnDefinition = "TEXT")
     private String sleepRest;
+    @Column(columnDefinition = "TEXT")
     private String psychosocial;
 
     @PrePersist
