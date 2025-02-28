@@ -3,7 +3,6 @@ package com.team7.carevoice.model;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +27,6 @@ public class HeadToToeAssessment {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     @JsonBackReference
-    @JsonManagedReference
     private Patient patient;
     
     private String neurological;
