@@ -14,15 +14,18 @@ import com.team7.carevoice.dto.request.TranscriptRequest;
 import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.Transcript;
 import com.team7.carevoice.services.TranscriptService;
+import com.team7.carevoice.services.AudioToTranscriptionService;
 
 @RestController
 @RequestMapping("/api/transcript")
 public class TranscriptController {
 
     private final TranscriptService transcriptService;
+    private final AudioToTranscriptionService audioToTranscriptionService;
 
-    public TranscriptController(TranscriptService transcriptService) {
+    public TranscriptController(TranscriptService transcriptService, AudioToTranscriptionService audioToTranscriptionService) {
         this.transcriptService = transcriptService;
+        this.audioToTranscriptionService = audioToTranscriptionService;
     }
 
     /**
@@ -78,5 +81,11 @@ public class TranscriptController {
             // Typically 404 if not found or 400 if parse errors
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+    }
+
+    @PostMapping("/transcribe")
+    public ResponseEntity<String> transcribeAudioToFile() throws Exception {
+        String result = audioToTranscriptionService.transcribeAudio();
+        return ResponseEntity.ok(result);
     }
 }

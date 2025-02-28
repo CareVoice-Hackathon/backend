@@ -38,10 +38,10 @@ public class AudioToTranscriptionService {
 
     public String transcribeAudio() throws IOException, InterruptedException {
         // Load audio file
-        Resource audioResource = resourceLoader.getResource("classpath:static/audio/demo_htt_speech_voice.mp3");
+        Resource audioResource = resourceLoader.getResource("classpath:audio/demo_htt_speech_voice.mp3");
         
         if (!audioResource.exists()) {
-            throw new RuntimeException("Audio file not found");
+            throw new RuntimeException("Audio file not found at: classpath:audio/demo_htt_speech_voice.mp3");
         }
         
         byte[] audioContent = Files.readAllBytes(audioResource.getFile().toPath());
