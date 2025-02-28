@@ -15,6 +15,9 @@ public class CareVoiceUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically generated unique ID
     private Long id;
 
+    @OneToMany(mappedBy = "carevoiceuser")
+    private List<Patient> patients;
+
     @Column(nullable = false, unique = true) // Ensure email is unique and non-null
     private String email;
     private String password;
