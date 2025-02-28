@@ -18,13 +18,13 @@ public class HeadToToeAssessmentController {
     }
 
     // GET endpoint - Retrieve an assessment by ID
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ApiResponse<HeadToToeAssessment> getAssessmentById(@PathVariable Long id) {
         return assessmentService.getAssessmentById(id);
     }
 
     // PATCH endpoint - Update an assessment by ID
-    @PatchMapping("/patch/{id}")
+    @PatchMapping("/{id}")
     public ApiResponse<HeadToToeAssessment> updateAssessment(@PathVariable Long id, @RequestBody HeadToToeAssessment updatedAssessment) {
         return assessmentService.updateAssessment(id, updatedAssessment);
     }
