@@ -2,6 +2,8 @@ package com.team7.carevoice.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +21,8 @@ public class Patient {
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "user_id")
-	private CareVoiceUser user;
+	@JsonBackReference
+	private CareVoiceUser carevoiceuser;
 
 	@Column(nullable = false, unique = true) // Ensure AHS number is unique and non-null
     private String ahsNumber;
@@ -30,10 +33,11 @@ public class Patient {
 
 	}
 
-	public Patient(String ahsNumber, String name, Date dateOfBirth) {
+	public Patient(String ahsNumber, String name, Date dateOfBirth, CareVoiceUser user) {
 		this.ahsNumber = ahsNumber;
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
+		this.carevoiceuser = user;
 	}
 
 	public long getId() {
