@@ -66,6 +66,7 @@ public class SecurityConfig {
                 );       
 
 
+
         List<String> protectedEndpoints = List.of(
                 "/api/user/profile/**",
                 "/api/user/profile/billing-address/**");
