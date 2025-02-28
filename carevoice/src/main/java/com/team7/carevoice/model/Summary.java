@@ -19,6 +19,8 @@ public class Summary {
 	private Patient patient;
 
     private LocalDateTime createdTime;
+
+    @Column(columnDefinition = "TEXT")
     private String body;
     @PrePersist
     protected void onCreate() {
