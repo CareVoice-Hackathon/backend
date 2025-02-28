@@ -28,6 +28,11 @@ public class DARP {
     @Column(columnDefinition = "TEXT")
     private String plan;
 
+	@PrePersist
+    protected void onCreate() {
+        this.createdTime = LocalDateTime.now();
+    }
+
 	public DARP() {
 
 	}
