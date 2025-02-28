@@ -1,9 +1,10 @@
 package com.team7.carevoice.model;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Represents a user in the AcmePlex movie ticket reservation system.
@@ -14,6 +15,10 @@ public class CareVoiceUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically generated unique ID
     private Long id;
+
+    @OneToMany(mappedBy = "carevoiceuser")
+    @JsonManagedReference
+    private List<Patient> patients;
 
     @Column(nullable = false, unique = true) // Ensure email is unique and non-null
     private String email;

@@ -54,6 +54,8 @@ public class SecurityConfig {
                 "/api/auth/register/**",
                 "/public/**", // Static files and public resources
                 "/static/**",
+                "/api/patient/**",
+                "/api/patients/**",
                 "/api/head-to-toe/get/**",      // for getting head to toe assessments by id
                 "/api/head-to-toe/patch/**"     // for updating head to toe assessments by id 
                 );       
