@@ -2,11 +2,11 @@ package com.team7.carevoice.services;
 
 import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.HeadToToeAssessment;
+import com.team7.carevoice.model.Patient;
 import com.team7.carevoice.repository.HeadToToeAssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -81,15 +81,14 @@ public class HeadToToeAssessmentService {
     }
 
   // Method to create and save a new assessment
-    public HeadToToeAssessment createNewAssessment(LocalDateTime createdTime, Long patientId,
+    public HeadToToeAssessment createNewAssessment(Patient patient,
     String neurological, String heent, String respiratory, String cardiac,
     String peripheralVascular, String integumentary, String musculoskeletal,
     String gastrointestinal, String genitourinary, String sleepRest, String psychosocial) {
         
         // Create the new HeadToToeAssessment using the constructor
         HeadToToeAssessment newAssessment = new HeadToToeAssessment(
-                createdTime,
-                patientId,
+                patient,
                 neurological,
                 heent,
                 respiratory,

@@ -31,6 +31,10 @@ public class Patient {
     @JsonManagedReference
     private List<DARP> darps;
 
+	@OneToMany(mappedBy = "patient")
+	@JsonManagedReference
+	private List<HeadToToeAssessment> assessments;
+
 	@Column(nullable = false, unique = true) // Ensure AHS number is unique and non-null
     private String ahsNumber;
     private String name;
