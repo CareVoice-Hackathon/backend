@@ -3,11 +3,15 @@ package com.team7.carevoice.model;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
@@ -24,6 +28,7 @@ public class HeadToToeAssessment {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     @JsonBackReference
+    @JsonManagedReference
     private Patient patient;
     
     private String neurological;
@@ -42,14 +47,20 @@ public class HeadToToeAssessment {
     protected void onCreate() {
         this.createdTime = LocalDateTime.now();
     }
+     @PrePersist
+    protected void onCreate() {
+        this.createdTime = LocalDateTime.now();
+    }
     
     public HeadToToeAssessment() {
     }
 
     public HeadToToeAssessment(Patient patient,
+    public HeadToToeAssessment(Patient patient,
         String neurological, String heent, String respiratory, String cardiac,
         String peripheralVascular, String integumentary, String musculoskeletal,
         String gastrointestinal, String genitourinary, String sleepRest, String psychosocial) {
+            this.patient = patient;
             this.patient = patient;
             this.neurological = neurological;
             this.heent = heent;
@@ -83,8 +94,12 @@ public class HeadToToeAssessment {
 
     public Patient getPatient() {
         return patient;
+    public Patient getPatient() {
+        return patient;
     }
 
+    public void setPatientId(Patient patient) {
+        this.patient = patient;
     public void setPatientId(Patient patient) {
         this.patient = patient;
     }
