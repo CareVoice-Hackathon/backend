@@ -4,10 +4,10 @@ package com.team7.carevoice.security;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -35,6 +35,14 @@ public class AuthTokenFilterUtil extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, java.io.IOException {
 
+        // Skip JWT checks for the document transcription API
+        String requestURI = request.getRequestURI();
+            if (requestURI.startsWith("/api/transcript")) {
+                // Just pass the request along without doing JWT checks
+                chain.doFilter(request, response);
+                return;
+            }        
+                
         final String authorizationHeader = request.getHeader("Authorization");
         String email = null;
         String jwt = null;
