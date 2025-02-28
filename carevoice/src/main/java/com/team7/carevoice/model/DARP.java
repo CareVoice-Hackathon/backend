@@ -35,14 +35,13 @@ public class DARP {
 	}
 
 	public DARP(
-		LocalDateTime createdTime,
 		String data,
 		String action,
 		String response,
 		String plan,
 		Patient patient
 	) {
-		this.createdTime = createdTime;
+		this.createdTime = LocalDateTime.now();
 		this.data = data;
 		this.action = action;
 		this.response = response;

@@ -1,6 +1,7 @@
 package com.team7.carevoice.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,30 +25,31 @@ public class DARPService {
 			.orElseThrow(() -> new IllegalArgumentException("DARP not found with ID: " + id));
 	}
 
-	public DARP updateDARP(Long id, DARP updatedDARP) {
+	public DARP updateDARP(Long id, Map<String, String> updatedBody) {
 		Optional<DARP> existingDARPOpt = darpRepository.findById(id);
 		if(!existingDARPOpt.isPresent()) {
 			return null;
 		}
 		DARP existingDARP = existingDARPOpt.get();
 
-		if(updatedDARP.getAction() != null) {
-			existingDARP.setAction(updatedDARP.getAction());
+		if(updatedBody.get("action") != null) {
+			existingDARP.setAction(updatedBody.get("action"));
 		}
-		if(updatedDARP.getPlan() != null) {
-			existingDARP.setPlan(updatedDARP.getPlan());
+		if(updatedBody.get("plan") != null) {
+			existingDARP.setPlan(updatedBody.get("plan"));
 		}
-		if(updatedDARP.getData() != null) {
-			existingDARP.setData(updatedDARP.getData());
+		if(updatedBody.get("data") != null) {
+			existingDARP.setData(updatedBody.get("data"));
 		}
-		if(updatedDARP.getResponse() != null) {
-			existingDARP.setResponse(updatedDARP.getResponse());
+		if(updatedBody.get("response") != null) {
+			existingDARP.setResponse(updatedBody.get("response"));
 		}
-
+		
 		return darpRepository.save(existingDARP);
 	}
 
+	public DARP createDARP(DARP newDARP) {
+		return darpRepository.save(newDARP);
+	}
 
-	//To-do: save method
-	
 }
