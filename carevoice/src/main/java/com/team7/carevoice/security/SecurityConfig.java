@@ -57,7 +57,9 @@ public class SecurityConfig {
                 "/api/patient/**",
                 "/api/patients/**",
                 "/api/head-to-toe/get/**",      // for getting head to toe assessments by id
-                "/api/head-to-toe/patch/**"     // for updating head to toe assessments by id 
+                "/api/head-to-toe/patch/**", // for updating head to toe assessments by id
+                "/api/summary/**",
+                "/api/summary/patient/**"
                 );       
 
         List<String> protectedEndpoints = List.of(

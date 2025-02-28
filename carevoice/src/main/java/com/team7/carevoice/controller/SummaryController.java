@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("summary")
+@RequestMapping("/api/summary")
 public class SummaryController {
     @Autowired
     private SummaryService summaryService;
@@ -26,12 +26,14 @@ public class SummaryController {
     }
 
     @PatchMapping("/{summaryId}")
-    public Summary updateSummary(@PathVariable Long summaryId, @RequestParam String body) {
+    public Summary updateSummary(@PathVariable Long summaryId, @RequestBody Map<String, String> requestBody) {
+        String body = requestBody.get("body");
         return summaryService.updateSummary(summaryId, body);
     }
 
     @PostMapping("/patient/{patientId}")
-    public Summary createSummary(@PathVariable Long patientId, @RequestParam String body) {
+    public Summary createSummary(@PathVariable Long patientId, @RequestBody Map<String, String> requestBody) {
+        String body = requestBody.get("body");
         return summaryService.createSummary(patientId, body);
     }
 }
