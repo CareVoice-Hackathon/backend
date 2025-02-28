@@ -1,8 +1,10 @@
 package com.team7.carevoice.model;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Patient {
@@ -28,6 +31,10 @@ public class Patient {
     private String ahsNumber;
     private String name;
     private Date dateOfBirth;
+
+	@OneToMany(mappedBy = "patient")
+	@JsonManagedReference
+	private List<HeadToToeAssessment> assessments;
 
 	public Patient() {
 
