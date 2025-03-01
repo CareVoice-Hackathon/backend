@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.team7.carevoice.dto.response.PatientDocumentsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,9 +74,11 @@ public class PatientController {
 	}
 
 	@GetMapping("/patient/{patientId}")
-	public ResponseEntity<?> getDocumentsByPatientId(
-		@PathVariable(required = true) Long patientId
-	) {
+	public ResponseEntity<?> getDocumentsByPatientId(@PathVariable(required = true) Long patientId) {
+		Patient patient = patientService.getPatientById(patientId);
+		if (patient == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, "Patient not found", null));
+		}
 
 		List<DARP> darps = darpService.findAllByPatientId(patientId);
 		List<Summary> summaries = summaryService.getSummariesByPatientId(patientId);
@@ -83,38 +87,26 @@ public class PatientController {
 
 		List<DocumentBriefResponse> response = new ArrayList<>();
 
-		for(int i = 0; i < darps.size(); i++) {
-			DocumentBriefResponse res = new DocumentBriefResponse(
-				darps.get(i).getId(),
-				"DARP",
-				darps.get(i).getCreatedTime());
+		for (DARP darp : darps) {
+			DocumentBriefResponse res = new DocumentBriefResponse(darp.getId(), "DARP", darp.getCreatedTime());
 			response.add(res);
 		}
-		for(int i = 0; i < summaries.size(); i++) {
-			DocumentBriefResponse res = new DocumentBriefResponse(
-				summaries.get(i).getSummaryId(),
-				"Summary",
-				summaries.get(i).getCreatedTime());
+		for (Summary summary : summaries) {
+			DocumentBriefResponse res = new DocumentBriefResponse(summary.getSummaryId(), "Summary", summary.getCreatedTime());
 			response.add(res);
 		}
-		for(int i = 0; i < assessments.size(); i++) {
-			DocumentBriefResponse res = new DocumentBriefResponse(
-				assessments.get(i).getId(),
-				"HeadToToe",
-				assessments.get(i).getCreatedTime());
+		for (HeadToToeAssessment assessment : assessments) {
+			DocumentBriefResponse res = new DocumentBriefResponse(assessment.getId(), "HeadToToe", assessment.getCreatedTime());
 			response.add(res);
 		}
-		for(int i = 0; i < transcripts.size(); i++) {
-			DocumentBriefResponse res = new DocumentBriefResponse(
-				transcripts.get(i).getId(),
-				"Transcript",
-				transcripts.get(i).getCreatedTime());
+		for (Transcript transcript : transcripts) {
+			DocumentBriefResponse res = new DocumentBriefResponse(transcript.getId(), "Transcript", transcript.getCreatedTime());
 			response.add(res);
 		}
 
 		Collections.sort(response, Comparator.comparing(DocumentBriefResponse::getCreatedTime).reversed());
 
-		return ResponseEntity.ok(new ApiResponse<>(true, "Fetched documents", response));
+		return ResponseEntity.ok(new ApiResponse<>(true, "Fetched documents", new PatientDocumentsResponse(patient.getName(), response)));
 	}
 
 	@PostMapping("/patient")

@@ -3,14 +3,12 @@ package com.team7.carevoice.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.team7.carevoice.model.Patient;
+import com.team7.carevoice.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.DARP;
@@ -54,4 +52,28 @@ public class DARPController {
 			"Updated successfully",
 			darpService.updateDARP(id, updatedBody)));
 	}
+
+	@Autowired
+	private PatientService patientService;
+
+	@PostMapping("/patient/{patientId}")
+	public ResponseEntity<?> createDARP(@PathVariable Long patientId, @RequestBody Map<String, String> requestBody) {
+		String data = requestBody.get("data");
+		String action = requestBody.get("action");
+		String response = requestBody.get("response");
+		String plan = requestBody.get("plan");
+
+		// Retrieve the Patient object using the patientId
+		Patient patient = patientService.getPatientById(patientId);
+		if (patient == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, "Patient not found", null));
+		}
+
+		DARP newDARP = new DARP(data, action, response, plan, patient);
+		DARP savedDARP = darpService.createDARP(newDARP);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse<>(true, "DARP created successfully", savedDARP));
+	}
+
+
 }
