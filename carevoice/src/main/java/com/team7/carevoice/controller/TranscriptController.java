@@ -86,7 +86,7 @@ public class TranscriptController {
     }
 
     @PostMapping("/transcribe")
-    public ResponseEntity<Map<String, String>> transcribeAudioToFile(
+    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile(
             @RequestParam("file") MultipartFile file,
             @RequestParam("patient") String patient) {
 
@@ -98,20 +98,16 @@ public class TranscriptController {
             logger.info("File size: {} bytes", file.getSize());
 
             // Process the transcription
-            String transcript = audioToTranscriptionService.transcribeAudio(file);
-
-            // Save transcription to database
-            TranscriptRequest transcriptRequest = new TranscriptRequest(
-
-            );
+            ApiResponse<Transcript> transcriptResponse = audioToTranscriptionService.transcribeAudio(file);
 
             // Return the transcribed text
-            return ResponseEntity.ok(Map.of("message", "Transcription successful", "transcript", transcript));
+            return ResponseEntity.ok(transcriptResponse);
 
         } catch (Exception e) {
             logger.error("Error processing transcription: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Failed to process transcription", "details", e.getMessage()));
+                    .body(new ApiResponse<>(false, "Failed to process transcription: " + e.getMessage(), null));
         }
     }
+
 }
