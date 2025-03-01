@@ -13,9 +13,7 @@ import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.Transcript;
 import com.team7.carevoice.services.TranscriptService;
 import com.team7.carevoice.services.AudioToTranscriptionService;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Map;
+import com.team7.carevoice.services.LLMTranscriptToSummaryService;
 
 @RestController
 @RequestMapping("/api/transcript")
@@ -24,10 +22,12 @@ public class TranscriptController {
     private static final Logger logger = LoggerFactory.getLogger(CareVoiceUserAuthentication.class);
     private final TranscriptService transcriptService;
     private final AudioToTranscriptionService audioToTranscriptionService;
+    private final LLMTranscriptToSummaryService transcriptToSummaryService;
 
-    public TranscriptController(TranscriptService transcriptService, AudioToTranscriptionService audioToTranscriptionService) {
+    public TranscriptController(TranscriptService transcriptService, AudioToTranscriptionService audioToTranscriptionService, LLMTranscriptToSummaryService transcriptToSummaryService) {
         this.transcriptService = transcriptService;
         this.audioToTranscriptionService = audioToTranscriptionService;
+        this.transcriptToSummaryService = transcriptToSummaryService;
     }
 
     /**
@@ -86,28 +86,14 @@ public class TranscriptController {
     }
 
     @PostMapping("/transcribe")
-    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile(
-            @RequestParam("file") MultipartFile file,
-            @RequestParam("patient") String patient) {
-
-        try {
-            // Log request details
-            logger.info("Received transcription request for patient: {}", patient);
-            logger.info("File name: {}", file.getOriginalFilename());
-            logger.info("File type: {}", file.getContentType());
-            logger.info("File size: {} bytes", file.getSize());
-
-            // Process the transcription
-            ApiResponse<Transcript> transcriptResponse = audioToTranscriptionService.transcribeAudio(file);
-
-            // Return the transcribed text
-            return ResponseEntity.ok(transcriptResponse);
-
-        } catch (Exception e) {
-            logger.error("Error processing transcription: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse<>(false, "Failed to process transcription: " + e.getMessage(), null));
-        }
+    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile() throws Exception {
+        ApiResponse<Transcript> response = audioToTranscriptionService.transcribeAudio();
+        return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/{transcriptId}/summary")
+    public ResponseEntity<String> getSummary(@PathVariable Long transcriptId) {
+        String summary = transcriptToSummaryService.generateSummary(transcriptId);
+        return ResponseEntity.ok(summary);
+    }
 }

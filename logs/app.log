@@ -222,25 +222,37 @@ Caused by: java.lang.RuntimeException: Audio file not found
 2025-02-28 17:41:12 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
 2025-02-28 17:41:12 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
 2025-02-28 17:41:14 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
-2025-02-28 18:29:56 INFO  c.t.carevoice.CarevoiceApplication - Starting CarevoiceApplication using Java 21.0.5 with PID 41264 (C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend\carevoice\target\classes started by Auste in C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend)
-2025-02-28 18:29:56 INFO  c.t.carevoice.CarevoiceApplication - The following 1 profile is active: "dev"
-2025-02-28 18:29:57 INFO  c.t.carevoice.config.FilterConfig - RequestLoggingFilter has been registered with order 1 and URL pattern /api/*
-2025-02-28 18:29:58 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-02-28 18:30:00 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
-2025-02-28 18:30:00 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-02-28 18:30:00 INFO  c.team7.carevoice.config.CacheConfig - Initializing CacheManager with cache: userProfileCache
-2025-02-28 18:30:00 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-02-28 18:30:00 INFO  c.t.c.security.SecurityConfig - Security filter chain configured with CORS.
-2025-02-28 18:30:00 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilterUtil$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-02-28 18:30:00 INFO  c.t.carevoice.CarevoiceApplication - Started CarevoiceApplication in 4.513 seconds (process running for 5.063)
-2025-02-28 18:30:00 INFO  com.team7.carevoice.StartupLogger - Server started successfully!
-2025-02-28 18:30:00 INFO  com.team7.carevoice.StartupLogger - Application is running at: http://localhost:8080
-2025-02-28 18:30:13 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/transcript/transcribe
-2025-02-28 18:30:13 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/transcript/transcribe
-2025-02-28 18:30:13 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
-2025-02-28 18:30:13 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
-2025-02-28 18:30:13 INFO  c.t.c.c.CareVoiceUserAuthentication - Received transcription request for patient: Patient A
-2025-02-28 18:30:13 INFO  c.t.c.c.CareVoiceUserAuthentication - File name: recording.wav
-2025-02-28 18:30:13 INFO  c.t.c.c.CareVoiceUserAuthentication - File type: audio/wav
-2025-02-28 18:30:13 INFO  c.t.c.c.CareVoiceUserAuthentication - File size: 81745 bytes
-2025-02-28 18:30:14 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 17:52:56 INFO  c.t.carevoice.CarevoiceApplication - Starting CarevoiceApplication using Java 21.0.5 with PID 23430 (/Users/rzhang/Desktop/U of C/610 Project Planning/hackrathon/backend/carevoice/target/classes started by rzhang in /Users/rzhang/Desktop/U of C/610 Project Planning/hackrathon/backend)
+2025-02-28 17:52:56 INFO  c.t.carevoice.CarevoiceApplication - The following 1 profile is active: "dev"
+2025-02-28 17:52:57 INFO  c.t.carevoice.config.FilterConfig - RequestLoggingFilter has been registered with order 1 and URL pattern /api/*
+2025-02-28 17:52:58 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-28 17:52:58 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2025-02-28 17:52:58 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-02-28 17:52:58 INFO  c.team7.carevoice.config.CacheConfig - Initializing CacheManager with cache: userProfileCache
+2025-02-28 17:52:58 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-28 17:52:58 INFO  c.t.c.security.SecurityConfig - Security filter chain configured with CORS.
+2025-02-28 17:52:58 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilterUtil$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-02-28 17:52:59 INFO  c.t.carevoice.CarevoiceApplication - Started CarevoiceApplication in 2.744 seconds (process running for 2.968)
+2025-02-28 17:52:59 INFO  com.team7.carevoice.StartupLogger - Server started successfully!
+2025-02-28 17:52:59 INFO  com.team7.carevoice.StartupLogger - Application is running at: http://localhost:8080
+2025-02-28 17:53:03 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/1740789674838/summary
+2025-02-28 17:53:03 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/1740789674838/summary
+2025-02-28 17:53:03 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/1740789674838/summary, Remote address: 0:0:0:0:0:0:0:1
+2025-02-28 17:53:03 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/1740789674838/summary, Remote address: 0:0:0:0:0:0:0:1
+2025-02-28 17:53:06 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 18:09:44 DEBUG o.s.security.web.FilterChainProxy - Securing GET /patients
+2025-02-28 18:09:44 DEBUG o.s.security.web.FilterChainProxy - Securing GET /patients
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 18:09:44 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/patients?continue to session
+2025-02-28 18:09:44 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/patients?continue to session
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-02-28 18:09:44 DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-02-28 18:09:44 DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-28 18:09:44 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-02-28 18:09:44 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-02-28 18:09:44 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
