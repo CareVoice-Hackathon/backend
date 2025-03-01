@@ -2,19 +2,16 @@ package com.team7.carevoice.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "document_transcriptions")
 public class Transcript {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String patientName;
-
 
     private Long patientId; // placeholder since we don't have a patient model yet
     private LocalDateTime createdTime;

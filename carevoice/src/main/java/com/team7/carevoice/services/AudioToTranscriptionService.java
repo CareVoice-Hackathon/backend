@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URI;
@@ -36,16 +37,10 @@ public class AudioToTranscriptionService {
         this.resourceLoader = resourceLoader;
     }
 
-    public String transcribeAudio() throws IOException, InterruptedException {
-        // Load audio file
-        Resource audioResource = resourceLoader.getResource("classpath:audio/demo_htt_speech_voice.mp3");
-        
-        if (!audioResource.exists()) {
-            throw new RuntimeException("Audio file not found at: classpath:audio/demo_htt_speech_voice.mp3");
-        }
-        
-        byte[] audioContent = Files.readAllBytes(audioResource.getFile().toPath());
-        
+    public String transcribeAudio(MultipartFile file) throws IOException, InterruptedException {
+
+        byte[] audioContent = file.getBytes();
+
         // Get transcription from Deepgram
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -73,13 +68,13 @@ public class AudioToTranscriptionService {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String filename = "transcript_" + timestamp + ".txt";
         Path outputPath = Paths.get(OUTPUT_DIR, filename);
-        
+
         // Create directory if it doesn't exist
         Files.createDirectories(Paths.get(OUTPUT_DIR));
-        
+
         // Write transcript to file
         Files.writeString(outputPath, transcriptText);
-        
-        return "Transcript saved to: " + outputPath.toString();
+
+        return transcriptText;
     }
-} 
+}

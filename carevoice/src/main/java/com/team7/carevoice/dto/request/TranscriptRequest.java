@@ -4,8 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 
 public class TranscriptRequest {
 
-    private String createdTime; 
-
     @NotBlank(message = "Patient ID number is required.")
     private Long patientId;
 
@@ -16,8 +14,7 @@ public class TranscriptRequest {
     public TranscriptRequest() {
     }
 
-    public TranscriptRequest(String createdTime, Long patientId, String patientName, String body) {
-        this.createdTime = createdTime;
+    public TranscriptRequest(Long patientId, String patientName, String body) {
         this.patientId = patientId;
         this.patientName = patientName;
         this.body = body;
@@ -29,14 +26,6 @@ public class TranscriptRequest {
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;
-    }
-
-    public String getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
     }
 
     public Long getPatientId() {

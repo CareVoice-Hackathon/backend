@@ -27,18 +27,12 @@ public class TranscriptService {
      * @param request the request body
      * @return an ApiResponse containing whether it succeeded and the Transcript data (or error message)
      */
-    public ApiResponse<Transcript> createTranscript(Long transcriptId, TranscriptRequest request) {
+    public ApiResponse<Transcript> createTranscript(TranscriptRequest request) {
         try {
             // 1) Construct or update the Transcript object
             Transcript transcript = new Transcript();
-            transcript.setId(transcriptId);
 
-            // Parse createdTime if needed
-            if (request.getCreatedTime() != null) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime dateTime = LocalDateTime.parse(request.getCreatedTime(), formatter);
-                transcript.setCreatedTime(dateTime);
-            }
+
             
             transcript.setName(request.getPatientName());
             transcript.setPatientId(request.getPatientId());
