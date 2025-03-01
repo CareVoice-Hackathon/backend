@@ -35,11 +35,11 @@ public class TranscriptService {
     /**
      * Creates or updates a transcript record with the given primary key (transcriptId).
      *
-     * @param transcriptId the DB primary key from the URL
+     * @param time the DB primary key from the URL
      * @param request the request body
      * @return an ApiResponse containing whether it succeeded and the Transcript data (or error message)
      */
-    public ApiResponse<Transcript> createTranscript(TranscriptRequest request) {
+    public ApiResponse<Transcript> createTranscript(Long time, TranscriptRequest request) {
         try {
             // 1) Construct or update the Transcript object
             Transcript transcript = new Transcript();
@@ -54,13 +54,13 @@ public class TranscriptService {
             Optional<Patient> patient = patientRepository.findById(request.getPatientId());
             if(!patient.isPresent()) {
                 return new ApiResponse<>(
-                    false, 
+                    false,
                     "Couldn't find patient from id"
                 );
             }
 
             Patient thePatient = patient.get();
-            
+
             transcript.setName(request.getPatientName());
             transcript.setPatient(thePatient);
             transcript.setBody(request.getBody());
@@ -70,16 +70,16 @@ public class TranscriptService {
 
             // 3) Return successful ApiResponse
             return new ApiResponse<>(
-                    true, 
-                    "Transcript created/updated successfully", 
+                    true,
+                    "Transcript created/updated successfully",
                     savedTranscript
             );
 
         } catch (Exception e) {
             // In case of an error (e.g. date parse error)
             return new ApiResponse<>(
-                    false, 
-                    "Failed to create/update transcript: " + e.getMessage(), 
+                    false,
+                    "Failed to create/update transcript: " + e.getMessage(),
                     null
             );
         }
@@ -138,7 +138,7 @@ public class TranscriptService {
         //     existingTranscript.setName(partialRequest.getPatientName());
         // }
         // if (partialRequest.getPatientId() != null) {
-        //     // cannot set new patient 
+        //     // cannot set new patient
         // }
         if (body != null) {
             existingTranscript.setBody(body);
