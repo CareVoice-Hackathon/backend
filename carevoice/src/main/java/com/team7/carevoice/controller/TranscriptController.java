@@ -1,8 +1,11 @@
 package com.team7.carevoice.controller;
 
+import com.team7.carevoice.model.Patient;
+import com.team7.carevoice.repository.PatientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +25,16 @@ public class TranscriptController {
     private static final Logger logger = LoggerFactory.getLogger(CareVoiceUserAuthentication.class);
     private final TranscriptService transcriptService;
     private final AudioToTranscriptionService audioToTranscriptionService;
+    private final PatientRepository patientRepository;
 
     public TranscriptController(
         TranscriptService transcriptService, 
-        AudioToTranscriptionService audioToTranscriptionService
+        AudioToTranscriptionService audioToTranscriptionService,
+        PatientRepository patientRepository
     ) {
         this.transcriptService = transcriptService;
         this.audioToTranscriptionService = audioToTranscriptionService;
+        this.patientRepository = patientRepository;
     }
 
     /**
@@ -87,7 +93,15 @@ public class TranscriptController {
         @RequestParam("file") MultipartFile file,
         @RequestParam("patient") String patientName
     ) throws Exception {
-        Long patientId = 1L;  
+        Optional<Patient> patientOptional = patientRepository.findByName(patientName);
+
+        if (patientOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, "Patient not found: " + patientName, null));
+        }
+
+        Long patientId = patientOptional.get().getId();
+
         ApiResponse<Transcript> response = audioToTranscriptionService.transcribeAudio(file, patientId, patientName);
         return ResponseEntity.ok(response);
     }
