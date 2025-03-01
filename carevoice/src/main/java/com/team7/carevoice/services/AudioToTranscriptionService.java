@@ -43,10 +43,10 @@ public class AudioToTranscriptionService {
         this.transcriptService = transcriptService;
     }
 
-    public ApiResponse<Transcript> transcribeAudio(MultipartFile file) throws IOException, InterruptedException {
-
+    public ApiResponse<Transcript> transcribeAudio(MultipartFile file, Long patientId, String patientName) throws IOException, InterruptedException {
+        // Get audio content from uploaded file
         byte[] audioContent = file.getBytes();
-
+        
         // Get transcription from Deepgram
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -73,8 +73,8 @@ public class AudioToTranscriptionService {
         // Create TranscriptRequest
         TranscriptRequest request = new TranscriptRequest();
         request.setBody(transcriptText);
-        request.setPatientName("Test Patient");
-        request.setPatientId(1L);
+        request.setPatientName(patientName);
+        request.setPatientId(patientId);
         request.setCreatedTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         // Use existing service to save to DB
