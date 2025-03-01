@@ -84,8 +84,8 @@ public class TranscriptController {
     }
 
     @PostMapping("/transcribe")
-    public ResponseEntity<String> transcribeAudioToFile() throws Exception {
-        String result = audioToTranscriptionService.transcribeAudio();
-        return ResponseEntity.ok(result);
+    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile() throws Exception {
+        ApiResponse<Transcript> response = audioToTranscriptionService.transcribeAudio();
+        return ResponseEntity.ok(response);
     }
 }

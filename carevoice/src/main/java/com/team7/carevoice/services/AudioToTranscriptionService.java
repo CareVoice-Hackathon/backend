@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.team7.carevoice.dto.response.ApiResponse;
+import com.team7.carevoice.dto.request.TranscriptRequest;
 
 import java.io.IOException;
 import java.net.URI;
@@ -30,13 +32,17 @@ public class AudioToTranscriptionService {
     private String deepgramApiKey;
 
     private final ResourceLoader resourceLoader;
-    private static final String OUTPUT_DIR = "src/main/resources/text_output";
+    private final TranscriptService transcriptService;
 
-    public AudioToTranscriptionService(ResourceLoader resourceLoader) {
+    public AudioToTranscriptionService(
+        ResourceLoader resourceLoader,
+        TranscriptService transcriptService
+    ) {
         this.resourceLoader = resourceLoader;
+        this.transcriptService = transcriptService;
     }
 
-    public String transcribeAudio() throws IOException, InterruptedException {
+    public ApiResponse<Transcript> transcribeAudio() throws IOException, InterruptedException {
         // Load audio file
         Resource audioResource = resourceLoader.getResource("classpath:audio/demo_htt_speech_voice.mp3");
         
@@ -48,14 +54,14 @@ public class AudioToTranscriptionService {
         
         // Get transcription from Deepgram
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.deepgram.com/v1/listen?model=nova-3&smart_format=true&language=en-US"))
                 .header("Authorization", "Token " + deepgramApiKey)
                 .header("Content-Type", "audio/mp3")
                 .POST(HttpRequest.BodyPublishers.ofByteArray(audioContent))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
         // Parse response
         ObjectMapper mapper = new ObjectMapper();
@@ -69,17 +75,14 @@ public class AudioToTranscriptionService {
             .path("transcript")
             .asText();
 
-        // Save to file
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-        String filename = "transcript_" + timestamp + ".txt";
-        Path outputPath = Paths.get(OUTPUT_DIR, filename);
-        
-        // Create directory if it doesn't exist
-        Files.createDirectories(Paths.get(OUTPUT_DIR));
-        
-        // Write transcript to file
-        Files.writeString(outputPath, transcriptText);
-        
-        return "Transcript saved to: " + outputPath.toString();
+        // Create TranscriptRequest
+        TranscriptRequest request = new TranscriptRequest();
+        request.setBody(transcriptText);
+        request.setPatientName("Test Patient");
+        request.setPatientId(1L);
+        request.setCreatedTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        // Use existing service to save to DB
+        return transcriptService.createTranscript(System.currentTimeMillis(), request);
     }
 } 
