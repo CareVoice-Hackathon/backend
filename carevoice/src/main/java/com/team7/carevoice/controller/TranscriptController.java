@@ -7,13 +7,13 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.team7.carevoice.dto.request.TranscriptRequest;
 import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.Transcript;
 import com.team7.carevoice.services.TranscriptService;
 import com.team7.carevoice.services.AudioToTranscriptionService;
-import com.team7.carevoice.services.LLMTranscriptToSummaryService;
 
 @RestController
 @RequestMapping("/api/transcript")
@@ -22,12 +22,13 @@ public class TranscriptController {
     private static final Logger logger = LoggerFactory.getLogger(CareVoiceUserAuthentication.class);
     private final TranscriptService transcriptService;
     private final AudioToTranscriptionService audioToTranscriptionService;
-    private final LLMTranscriptToSummaryService transcriptToSummaryService;
 
-    public TranscriptController(TranscriptService transcriptService, AudioToTranscriptionService audioToTranscriptionService, LLMTranscriptToSummaryService transcriptToSummaryService) {
+    public TranscriptController(
+        TranscriptService transcriptService, 
+        AudioToTranscriptionService audioToTranscriptionService
+    ) {
         this.transcriptService = transcriptService;
         this.audioToTranscriptionService = audioToTranscriptionService;
-        this.transcriptToSummaryService = transcriptToSummaryService;
     }
 
     /**
@@ -57,7 +58,6 @@ public class TranscriptController {
     @GetMapping("/{transcriptId}")
     public ResponseEntity<ApiResponse<Transcript>> getTranscript(@PathVariable Long transcriptId) {
         ApiResponse<Transcript> response = transcriptService.getTranscript(transcriptId);
-
         if (response.isSuccess()) {
             return ResponseEntity.ok(response);
         } else {
@@ -74,26 +74,21 @@ public class TranscriptController {
     public ResponseEntity<ApiResponse<Transcript>> patchTranscript(
             @PathVariable Long transcriptId,
             @RequestBody Map<String, String> request) {
-
         ApiResponse<Transcript> response = transcriptService.patchTranscript(transcriptId, request.get("body"));
-
         if (response.isSuccess()) {
             return ResponseEntity.ok(response);
         } else {
-            // Typically 404 if not found or 400 if parse errors
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
 
     @PostMapping("/transcribe")
-    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile() throws Exception {
-        ApiResponse<Transcript> response = audioToTranscriptionService.transcribeAudio();
+    public ResponseEntity<ApiResponse<Transcript>> transcribeAudioToFile(
+        @RequestParam("file") MultipartFile file,
+        @RequestParam("patient") String patientName
+    ) throws Exception {
+        Long patientId = 1L;  
+        ApiResponse<Transcript> response = audioToTranscriptionService.transcribeAudio(file, patientId, patientName);
         return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/{transcriptId}/summary")
-    public ResponseEntity<String> getSummary(@PathVariable Long transcriptId) {
-        String summary = transcriptToSummaryService.generateSummary(transcriptId);
-        return ResponseEntity.ok(summary);
     }
 }
