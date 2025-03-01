@@ -22,7 +22,7 @@ public class CreateUserRequest {
     private String lastName;
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String email) {
