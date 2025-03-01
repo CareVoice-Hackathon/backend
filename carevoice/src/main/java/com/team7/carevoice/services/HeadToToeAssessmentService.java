@@ -3,9 +3,14 @@ package com.team7.carevoice.services;
 import com.team7.carevoice.dto.response.ApiResponse;
 import com.team7.carevoice.model.HeadToToeAssessment;
 import com.team7.carevoice.model.Patient;
+import com.team7.carevoice.model.Summary;
 import com.team7.carevoice.repository.HeadToToeAssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import java.util.Optional;
 
@@ -19,12 +24,39 @@ public class HeadToToeAssessmentService {
         this.headToToeAssessmentRepository = headToToeAssessmentRepository;
     }
 
-    // GET endpoint - Retrieve an assessment by ID
-    public ApiResponse<HeadToToeAssessment> getAssessmentById(Long id) {
-        Optional<HeadToToeAssessment> assessment = headToToeAssessmentRepository.findById(id);
+    public List<HeadToToeAssessment> getAssessmentsByPatientId(Long patientId) {
+        return headToToeAssessmentRepository.findByPatientId(patientId);
+    }
 
-        if (assessment.isPresent()) {
-            return new ApiResponse<>(true, "Assessment retrieved successfully", assessment.get());
+    // GET endpoint - Retrieve an assessment by ID
+    public ApiResponse<?> getAssessmentById(Long id) {
+        Optional<HeadToToeAssessment> assessmentOpt = headToToeAssessmentRepository.findById(id);
+
+        if (assessmentOpt.isPresent()) {
+
+            HeadToToeAssessment assessment = assessmentOpt.get();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("createdTime", assessment.getCreatedTime());
+            response.put("patientName", assessment.getPatient().getName());
+            response.put("patientId", assessment.getPatient().getId());
+
+            Map<String, String> body = new HashMap<>();
+            body.put("neurological", assessment.getNeurological());
+            body.put("HEENT", assessment.getHeent());
+            body.put("respiratory", assessment.getRespiratory());
+            body.put("cardiac", assessment.getCardiac());
+            body.put("peripheral_Vascular", assessment.getPeripheralVascular());
+            body.put("integumentary", assessment.getIntegumentary());
+            body.put("musculoskeletal", assessment.getMusculoskeletal());
+            body.put("gastrointestinal", assessment.getGastrointestinal());
+            body.put("genitourinary", assessment.getGenitourinary());
+            body.put("sleep_Rest", assessment.getSleepRest());
+            body.put("psychosocial", assessment.getPsychosocial());
+
+            response.put("body", body);
+
+            return new ApiResponse<>(true, "Assessment retrieved successfully", response);
         } else {
             return new ApiResponse<>(false, "Assessment not found", null);
         }

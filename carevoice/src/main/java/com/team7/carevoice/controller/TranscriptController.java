@@ -2,6 +2,8 @@ package com.team7.carevoice.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -71,9 +73,9 @@ public class TranscriptController {
     @PatchMapping("/{transcriptId}")
     public ResponseEntity<ApiResponse<Transcript>> patchTranscript(
             @PathVariable Long transcriptId,
-            @RequestBody TranscriptRequest partialRequest) {
+            @RequestBody Map<String, String> request) {
 
-        ApiResponse<Transcript> response = transcriptService.patchTranscript(transcriptId, partialRequest);
+        ApiResponse<Transcript> response = transcriptService.patchTranscript(transcriptId, request.get("body"));
 
         if (response.isSuccess()) {
             return ResponseEntity.ok(response);
@@ -102,7 +104,6 @@ public class TranscriptController {
             TranscriptRequest transcriptRequest = new TranscriptRequest(
 
             );
-            transcriptService.createTranscript()
 
             // Return the transcribed text
             return ResponseEntity.ok(Map.of("message", "Transcription successful", "transcript", transcript));
