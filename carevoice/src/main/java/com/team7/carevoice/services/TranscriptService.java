@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.team7.carevoice.dto.request.TranscriptRequest;
 import com.team7.carevoice.dto.response.ApiResponse;
+import com.team7.carevoice.dto.response.TranscriptResponse;
 import com.team7.carevoice.model.Patient;
 import com.team7.carevoice.model.Summary;
 import com.team7.carevoice.model.Transcript;
@@ -33,11 +34,13 @@ public class TranscriptService {
     }
 
     /**
-     * Creates or updates a transcript record with the given primary key (transcriptId).
+     * Creates or updates a transcript record with the given primary key
+     * (transcriptId).
      *
-     * @param time the DB primary key from the URL
+     * @param time    the DB primary key from the URL
      * @param request the request body
-     * @return an ApiResponse containing whether it succeeded and the Transcript data (or error message)
+     * @return an ApiResponse containing whether it succeeded and the Transcript
+     *         data (or error message)
      */
     public ApiResponse<Transcript> createTranscript(Long time, TranscriptRequest request) {
         try {
@@ -52,11 +55,10 @@ public class TranscriptService {
             }
 
             Optional<Patient> patient = patientRepository.findById(request.getPatientId());
-            if(!patient.isPresent()) {
+            if (!patient.isPresent()) {
                 return new ApiResponse<>(
-                    false,
-                    "Couldn't find patient from id"
-                );
+                        false,
+                        "Couldn't find patient from id");
             }
 
             Patient thePatient = patient.get();
@@ -72,16 +74,14 @@ public class TranscriptService {
             return new ApiResponse<>(
                     true,
                     "Transcript created/updated successfully",
-                    savedTranscript
-            );
+                    savedTranscript);
 
         } catch (Exception e) {
             // In case of an error (e.g. date parse error)
             return new ApiResponse<>(
                     false,
                     "Failed to create/update transcript: " + e.getMessage(),
-                    null
-            );
+                    null);
         }
     }
 
@@ -89,22 +89,23 @@ public class TranscriptService {
      * Retrieves the transcript by primary key.
      *
      * @param transcriptId the DB primary key
-     * @return an ApiResponse with success status, message, and Transcript data (if found)
+     * @return an ApiResponse with success status, message, and Transcript data (if
+     *         found)
      */
-    public ApiResponse<Transcript> getTranscript(Long transcriptId) {
+    public ApiResponse<TranscriptResponse> getTranscript(Long transcriptId) {
         Optional<Transcript> optionalTranscript = transcriptRepository.findById(transcriptId);
         if (optionalTranscript.isPresent()) {
+            Transcript transcript = optionalTranscript.get();
+            TranscriptResponse response = new TranscriptResponse(transcript);
             return new ApiResponse<>(
                     true,
                     "Transcript retrieved successfully",
-                    optionalTranscript.get()
-            );
+                    response);
         } else {
             return new ApiResponse<>(
                     false,
                     "Transcript not found with ID: " + transcriptId,
-                    null
-            );
+                    null);
         }
     }
 
@@ -113,32 +114,33 @@ public class TranscriptService {
 
         if (existingOpt.isEmpty()) {
             return new ApiResponse<>(
-                false,
-                "Transcript not found with ID: " + transcriptId,
-                null
-            );
+                    false,
+                    "Transcript not found with ID: " + transcriptId,
+                    null);
         }
         Transcript existingTranscript = existingOpt.get();
         // Only update fields if they're provided (non-null in TranscriptRequest)
         // if (partialRequest.getCreatedTime() != null) {
-        //     try {
-        //         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        //         LocalDateTime dateTime = LocalDateTime.parse(partialRequest.getCreatedTime(), formatter);
-        //         existingTranscript.setCreatedTime(dateTime);
-        //     } catch (Exception e) {
-        //         return new ApiResponse<>(
-        //             false,
-        //             "Error parsing createdTime: " + e.getMessage(),
-        //             null
-        //         );
-        //     }
+        // try {
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd
+        // HH:mm:ss");
+        // LocalDateTime dateTime = LocalDateTime.parse(partialRequest.getCreatedTime(),
+        // formatter);
+        // existingTranscript.setCreatedTime(dateTime);
+        // } catch (Exception e) {
+        // return new ApiResponse<>(
+        // false,
+        // "Error parsing createdTime: " + e.getMessage(),
+        // null
+        // );
+        // }
         // }
 
         // if (partialRequest.getPatientName() != null) {
-        //     existingTranscript.setName(partialRequest.getPatientName());
+        // existingTranscript.setName(partialRequest.getPatientName());
         // }
         // if (partialRequest.getPatientId() != null) {
-        //     // cannot set new patient
+        // // cannot set new patient
         // }
         if (body != null) {
             existingTranscript.setBody(body);
@@ -147,10 +149,9 @@ public class TranscriptService {
         Transcript saved = transcriptRepository.save(existingTranscript);
 
         return new ApiResponse<>(
-            true,
-            "Transcript partially updated successfully",
-            saved
-        );
+                true,
+                "Transcript partially updated successfully",
+                saved);
     }
 
 }

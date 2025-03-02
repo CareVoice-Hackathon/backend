@@ -14,14 +14,15 @@ public class Summary {
     private Long summaryId;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "patient_id")
-	@JsonBackReference
-	private Patient patient;
+    @JoinColumn(name = "patient_id")
+    @JsonBackReference
+    private Patient patient;
 
     private LocalDateTime createdTime;
 
     @Column(columnDefinition = "TEXT")
     private String body;
+
     @PrePersist
     protected void onCreate() {
         this.createdTime = LocalDateTime.now();
