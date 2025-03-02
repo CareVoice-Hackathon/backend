@@ -808,3 +808,347 @@ Caused by: java.util.NoSuchElementException: No value present
 2025-02-28 22:50:44 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
 2025-02-28 22:50:44 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/transcript/transcribe, Remote address: 0:0:0:0:0:0:0:1
 2025-02-28 22:50:45 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:17:05 INFO  c.t.carevoice.CarevoiceApplication - Starting CarevoiceApplication using Java 21.0.5 with PID 52412 (C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend\carevoice\target\classes started by Auste in C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend)
+2025-03-01 20:17:05 INFO  c.t.carevoice.CarevoiceApplication - The following 1 profile is active: "dev"
+2025-03-01 20:17:07 INFO  c.t.carevoice.config.FilterConfig - RequestLoggingFilter has been registered with order 1 and URL pattern /api/*
+2025-03-01 20:17:08 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-01 20:17:09 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2025-03-01 20:17:09 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-03-01 20:17:09 INFO  c.team7.carevoice.config.CacheConfig - Initializing CacheManager with cache: userProfileCache
+2025-03-01 20:17:09 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-01 20:17:09 INFO  c.t.c.security.SecurityConfig - Security filter chain configured with CORS.
+2025-03-01 20:17:09 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilterUtil$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-03-01 20:17:10 INFO  c.t.carevoice.CarevoiceApplication - Started CarevoiceApplication in 4.724 seconds (process running for 5.304)
+2025-03-01 20:17:10 INFO  com.team7.carevoice.StartupLogger - Server started successfully!
+2025-03-01 20:17:10 INFO  com.team7.carevoice.StartupLogger - Application is running at: http://localhost:8080
+2025-03-01 20:17:17 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:17:17 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:17:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:17:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:17:17 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:17:18 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/summary/patient/undefined
+2025-03-01 20:17:18 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/summary/patient/undefined
+2025-03-01 20:17:18 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:17:18 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:17:18 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'patientId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "undefined"]
+2025-03-01 20:17:18 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:17:18 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-03-01 20:17:18 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:17:18 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-03-01 20:17:18 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-03-01 20:18:20 INFO  c.t.carevoice.CarevoiceApplication - Starting CarevoiceApplication using Java 21.0.5 with PID 55956 (C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend\carevoice\target\classes started by Auste in C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend)
+2025-03-01 20:18:20 INFO  c.t.carevoice.CarevoiceApplication - The following 1 profile is active: "dev"
+2025-03-01 20:18:21 INFO  c.t.carevoice.config.FilterConfig - RequestLoggingFilter has been registered with order 1 and URL pattern /api/*
+2025-03-01 20:18:22 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-01 20:18:23 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2025-03-01 20:18:23 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-03-01 20:18:23 INFO  c.team7.carevoice.config.CacheConfig - Initializing CacheManager with cache: userProfileCache
+2025-03-01 20:18:23 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-01 20:18:23 INFO  c.t.c.security.SecurityConfig - Security filter chain configured with CORS.
+2025-03-01 20:18:23 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilterUtil$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-03-01 20:18:24 INFO  c.t.carevoice.CarevoiceApplication - Started CarevoiceApplication in 4.227 seconds (process running for 4.691)
+2025-03-01 20:18:24 INFO  com.team7.carevoice.StartupLogger - Server started successfully!
+2025-03-01 20:18:24 INFO  com.team7.carevoice.StartupLogger - Application is running at: http://localhost:8080
+2025-03-01 20:18:27 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:18:27 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:18:27 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:18:27 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:18:27 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:18:28 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/summary/patient/undefined
+2025-03-01 20:18:28 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/summary/patient/undefined
+2025-03-01 20:18:28 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:18:28 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:18:28 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'patientId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "undefined"]
+2025-03-01 20:18:28 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:18:28 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-03-01 20:18:28 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:18:28 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-03-01 20:18:28 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-03-01 20:21:21 INFO  c.t.carevoice.CarevoiceApplication - Starting CarevoiceApplication using Java 21.0.5 with PID 43400 (C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend\carevoice\target\classes started by Auste in C:\Users\Auste\OneDrive\Documents\ENSF609610\carevoice_hackathon\backend)
+2025-03-01 20:21:21 INFO  c.t.carevoice.CarevoiceApplication - The following 1 profile is active: "dev"
+2025-03-01 20:21:23 INFO  c.t.carevoice.config.FilterConfig - RequestLoggingFilter has been registered with order 1 and URL pattern /api/*
+2025-03-01 20:21:24 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-01 20:21:25 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2025-03-01 20:21:25 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-03-01 20:21:25 INFO  c.team7.carevoice.config.CacheConfig - Initializing CacheManager with cache: userProfileCache
+2025-03-01 20:21:25 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-01 20:21:26 INFO  c.t.c.security.SecurityConfig - Security filter chain configured with CORS.
+2025-03-01 20:21:26 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilterUtil$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-03-01 20:21:26 INFO  c.t.carevoice.CarevoiceApplication - Started CarevoiceApplication in 5.258 seconds (process running for 6.135)
+2025-03-01 20:21:26 INFO  com.team7.carevoice.StartupLogger - Server started successfully!
+2025-03-01 20:21:26 INFO  com.team7.carevoice.StartupLogger - Application is running at: http://localhost:8080
+2025-03-01 20:21:32 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:21:32 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:21:32 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:21:32 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:21:32 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:21:33 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/summary/patient/undefined
+2025-03-01 20:21:33 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/summary/patient/undefined
+2025-03-01 20:21:33 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:21:33 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:21:33 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'patientId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "undefined"]
+2025-03-01 20:21:33 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:21:33 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-03-01 20:21:33 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:21:33 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-03-01 20:21:33 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-03-01 20:24:11 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:24:11 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:24:11 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:24:11 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:24:11 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:24:12 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/head-to-toe/patient/undefined
+2025-03-01 20:24:12 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/head-to-toe/patient/undefined
+2025-03-01 20:24:12 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/head-to-toe/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:24:12 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/head-to-toe/patient/undefined, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:24:12 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'patientId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "undefined"]
+2025-03-01 20:24:12 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:24:12 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-03-01 20:24:12 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:24:12 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2025-03-01 20:24:12 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-03-01 20:25:31 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:25:31 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:25:31 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:31 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:31 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:25:53 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:25:53 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:25:53 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:53 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:53 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:25:58 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:25:58 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:25:58 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:58 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:25:58 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:14 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:26:14 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:26:14 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:14 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:14 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:17 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:26:17 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:26:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:17 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:18 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/summary/patient/3
+2025-03-01 20:26:18 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/summary/patient/3
+2025-03-01 20:26:18 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:18 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/summary/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:18 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:19 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:26:19 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:26:19 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:19 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:19 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:19 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:26:19 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:26:19 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:19 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:19 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:22 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/summary/1
+2025-03-01 20:26:22 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/summary/1
+2025-03-01 20:26:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/summary/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/summary/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:22 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:26:22 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/summary/1
+2025-03-01 20:26:22 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/summary/1
+2025-03-01 20:26:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/summary/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/summary/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:26:22 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:15 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:27:15 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:27:15 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:15 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:15 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:15 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:27:15 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:27:15 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:15 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:15 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:16 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:16 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:16 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:16 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:16 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:16 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:16 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:16 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:16 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:16 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:17 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:27:17 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:27:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:17 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:17 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:27:17 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:27:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:17 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:17 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:20 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:27:20 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:27:20 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:20 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:20 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:21 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/head-to-toe/patient/3
+2025-03-01 20:27:21 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/head-to-toe/patient/3
+2025-03-01 20:27:21 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/head-to-toe/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:21 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/head-to-toe/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:21 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:22 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:22 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:22 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:22 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:22 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:22 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:22 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:23 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/head-to-toe/1
+2025-03-01 20:27:23 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/head-to-toe/1
+2025-03-01 20:27:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:23 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:23 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/head-to-toe/1
+2025-03-01 20:27:23 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/head-to-toe/1
+2025-03-01 20:27:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:23 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:34 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:34 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:34 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:34 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:34 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:34 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:34 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:34 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:34 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:34 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:39 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/4
+2025-03-01 20:27:39 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/4
+2025-03-01 20:27:39 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:39 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/4, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:39 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/transcript/3
+2025-03-01 20:27:39 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/transcript/3
+2025-03-01 20:27:39 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:39 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/transcript/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:39 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:39 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:47 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/DARP/patient/3
+2025-03-01 20:27:47 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/DARP/patient/3
+2025-03-01 20:27:47 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/DARP/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:47 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: POST, URI: /api/DARP/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:47 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/DARP/1
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/DARP/1
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/DARP/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/DARP/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:48 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:27:48 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/DARP/1
+2025-03-01 20:27:49 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/DARP/1
+2025-03-01 20:27:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/DARP/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/DARP/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:27:49 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:40 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:40 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:40 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:40 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:40 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:40 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:40 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:40 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:40 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:40 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:41 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:28:41 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:28:41 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:41 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:41 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:41 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:28:41 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:28:41 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:41 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:41 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:45 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:45 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:45 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:45 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:45 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:45 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:45 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:45 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:45 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:45 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:49 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:28:49 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:28:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:49 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:49 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:28:49 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:28:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:49 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:49 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:52 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:52 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:52 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:52 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:52 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:28:52 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:28:52 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:28:52 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:52 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:28:52 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:29:58 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:29:58 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:29:58 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:29:58 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:29:59 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:29:59 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patients/1
+2025-03-01 20:29:59 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patients/1
+2025-03-01 20:29:59 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:29:59 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patients/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:29:59 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:30:00 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:30:00 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:30:00 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:00 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:00 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:30:00 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:30:00 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:30:00 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:00 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:00 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:30:01 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/head-to-toe/1
+2025-03-01 20:30:01 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/head-to-toe/1
+2025-03-01 20:30:01 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:01 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:01 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:30:01 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/head-to-toe/1
+2025-03-01 20:30:01 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/head-to-toe/1
+2025-03-01 20:30:01 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:01 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/head-to-toe/1, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:30:01 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:31:23 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:31:23 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:31:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:31:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:31:23 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-03-01 20:31:23 DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/patient/3
+2025-03-01 20:31:23 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/patient/3
+2025-03-01 20:31:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:31:23 INFO  c.t.c.filter.RequestLoggingFilter - Incoming request - Method: GET, URI: /api/patient/3, Remote address: 0:0:0:0:0:0:0:1
+2025-03-01 20:31:23 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
